@@ -1,1 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Origin - Explore Meme Origins</title>
+    <style>
+        :root {
+            --primary: #3c7eff;
+            --secondary: #00d8ff;
+            --background: #ffffff;
+            --card-bg: #f8f8f8;
+            --text: #1a1a1a;
+            --accent: #00e5ff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 5px 25px rgba(0,150,255,0.2);
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-image: 
+                linear-gradient(transparent 0%, rgba(255,255,255,0.1) 100%),
+                radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 60%);
+            transform: rotate(30deg);
+            animation: headerEffect 20s linear infinite;
+        }
+        
+        @keyframes headerEffect {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .coin-stats {
+            background-color: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-around;
+            max-width: 800px;
+            margin: 2rem auto 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coin-stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                transparent,
+                rgba(255,255,255,0.1) 45%, 
+                rgba(255,255,255,0.2) 50%, 
+                rgba(255,255,255,0.1) 55%,
+                transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 8s linear infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        .stat {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        main::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 5%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at center, rgba(0,150,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        main::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle at center, rgba(0,150,255,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+        
+        .intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .intro p {
+            max-width: 800px;
+            margin: 1.5rem auto 0;
+            font-size: 1.15rem;
+            line-height: 1.7;
+        }
+        
+        .intro::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: radial-gradient(circle at center, rgba(60,126,255,0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        .meme-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .meme-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .meme-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,150,255,0.2);
+            border-color: var(--accent);
+        }
+        
+        .meme-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .meme-card:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .meme-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .meme-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .meme-card:hover .meme-img img {
+            transform: scale(1.1);
+        }
+        
+        .meme-details {
+            padding: 1.5rem;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            transform: translateY(101%);
+            transition: transform 0.4s ease;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            max-height: 250px;
+            overflow-y: auto;
+        }
+        
+        .meme-card:hover .meme-details {
+            transform: translateY(0);
+        }
+        
+        .meme-details h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .meme-details h3::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .meme-details p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.75);
+            z-index: 100;
+            overflow-y: auto;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .modal-active {
+            display: block;
+            animation: modalFadeIn 0.5s forwards;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: var(--background);
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            border-radius: 16px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background-color: var(--background);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .close-modal:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .modal-img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.5s ease;
+        }
+        
+        .modal-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .modal-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .modal-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .modal-desc {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--text);
+            position: relative;
+            padding: 0.5rem 0;
+            text-align: justify;
+        }
+        
+        .modal-info {
+            background-color: rgba(0,0,0,0.03);
+            padding: 1.5rem;
+            border-radius: 16px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at center, rgba(0,150,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .info-item {
+            position: relative;
+            padding-left: 16px;
+        }
+        
+        .info-item::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        
+        .info-item span {
+            display: block;
+        }
+        
+        .info-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+        
+        .info-value {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
 
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .buy-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108,92,231,0.4);
+        }
+        
+        footer {
+            background-color: #f8f8f8;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: left;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 1.5px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 12px;
+        }
+        
+        .footer-links li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 5px;
+            height: 5px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+        
+        .footer-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,120,255,0.3);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            opacity: 0.7;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .coin-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .modal-content {
+                padding: 1rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Project Origin</h1>
+            <p>Discover the origins of the internet's most iconic memes while investing in the future of memecoin</p>
+        </div>
+    </header>
+    
+    <main>
+        <section class="intro">
+            <h2>The Meme Museum</h2>
+            <p>Click on any meme to discover its origin story, cultural impact, and how it relates to our Project Origin ecosystem. Our mission is to preserve and celebrate internet culture while building a community-driven cryptocurrency.</p>
+        </section>
+        
+        <section class="meme-grid">
+            <!-- Meme 1 -->
+            <div class="meme-card" onclick="openModal('doge')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Doge Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Doge</h3>
+                    <p>The iconic Shiba Inu that started a memecoin revolution</p>
+                </div>
+            </div>
+            
+            <!-- Meme 2 -->
+            <div class="meme-card" onclick="openModal('wojak')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Wojak Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Wojak</h3>
+                    <p>The feels guy and his many emotional derivatives</p>
+                </div>
+            </div>
+            
+            <!-- Meme 3 -->
+            <div class="meme-card" onclick="openModal('pepe')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Pepe Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Pepe the Frog</h3>
+                    <p>From comic character to crypto icon</p>
+                </div>
+            </div>
+            
+            <!-- Meme 4 -->
+            <div class="meme-card" onclick="openModal('success-kid')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Success Kid Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Success Kid</h3>
+                    <p>The fist-pumping baby of victory</p>
+                </div>
+            </div>
+            
+            <!-- Meme 5 -->
+            <div class="meme-card" onclick="openModal('distracted-boyfriend')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Distracted Boyfriend Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Distracted Boyfriend</h3>
+                    <p>A stock photo that captured the internet's attention</p>
+                </div>
+            </div>
+            
+            <!-- Meme 6 -->
+            <div class="meme-card" onclick="openModal('hide-pain-harold')">
+                <div class="meme-img">
+                    <img src="/api/placeholder/400/320" alt="Hide the Pain Harold Meme">
+                </div>
+                <div class="meme-details">
+                    <h3>Hide the Pain Harold</h3>
+                    <p>The stock photo model with the iconic forced smile</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Modal for Doge -->
+    <div id="doge-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('doge')">×</div>
+            <img src="/api/placeholder/400/320" alt="Doge Meme" class="modal-img">
+            <h2 class="modal-title">Doge</h2>
+            <p class="modal-desc">
+                The Doge meme originated from a 2010 blog post by Japanese kindergarten teacher Atsuko Sato featuring photos of her Shiba Inu dog Kabosu. The specific image gained popularity in late 2010 when posted to Reddit with the title "LMBO LOOK @ THIS FUKKIN DOGE," giving birth to the misspelled "doge" moniker. The meme's distinctive aesthetic developed organically around 2013: Comic Sans MS font, intentionally broken English phrases ("such wow," "very amaze"), and multicolored text became standardized as it spread across Reddit, Tumblr, and 4chan. Dogecoin, created by Billy Markus and Jackson Palmer on December 6, 2013 as cryptocurrency satire, later skyrocketed in value after Elon Musk's 2021 endorsements, transforming a simple dog photo into a multibillion-dollar phenomenon.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2010</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Atsuko Sato (photo)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">Very High</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">Dogecoin (DOGE)</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Wojak -->
+    <div id="wojak-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('wojak')">×</div>
+            <img src="/api/placeholder/400/320" alt="Wojak Meme" class="modal-img">
+            <h2 class="modal-title">Wojak</h2>
+            <p class="modal-desc">
+                Wojak (pronounced "voy-ack") emerged around 2009-2010 from a Polish image board called Vichan as a simple, minimalist line drawing of a bald man with a blank expression, reportedly created by an anonymous Polish user as a self-portrait. The name "Wojak" itself means "soldier" or "fighter" in Polish, though the character's demeanor hardly suggests aggression. The drawing first spread to German imageboard Krautchan (where he was known as "Ciepła Twarz" - Polish for "warm face") before reaching 4chan around 2010-2011. Wojak's evolution accelerated after 2014 when he became associated with the "feels" phenomenon, leading to the "I Know That Feel Bro" meme and numerous psychological archetypes like Doomer, Bloomer, and NPC. In cryptocurrency culture, specialized Wojak variants reflect investor psychology—from the euphoric "rich" Wojak celebrating gains to the desperate "poor" Wojak facing financial ruin.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2010</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Anonymous (Krautchan)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">High</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">Multiple</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Pepe -->
+    <div id="pepe-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('pepe')">×</div>
+            <img src="/api/placeholder/400/320" alt="Pepe Meme" class="modal-img">
+            <h2 class="modal-title">Pepe the Frog</h2>
+            <p class="modal-desc">
+                Pepe the Frog began in 2005 with artist Matt Furie's self-published "Boy's Club" zine, featuring an anthropomorphic frog alongside other animal characters in laid-back scenarios. The specific panel that launched Pepe's meme career came from a 2008 comic where Pepe responds to being caught urinating with his pants down with the nonchalant phrase "feels good man" - this single frame first circulated on bodybuilding forums and 4chan as a reaction image. Between 2008 and 2015, users modified the character to express various emotions ("Sad Frog," "Angry Pepe," "Smug Frog"), before the character became entangled in political controversies around 2016, devastating Furie who even symbolically killed the character in 2017. In the cryptocurrency space, Pepe found new life, most notably with the 2021 launch of the PEPE token, which reached a market capitalization of over $1 billion by 2023, and through the pioneering "Rare Pepes" NFT collection on the Bitcoin blockchain in 2016.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2005</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Matt Furie</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">Extremely High</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">PEPE, PEPECOIN</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Success Kid -->
+    <div id="success-kid-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('success-kid')">×</div>
+            <img src="/api/placeholder/400/320" alt="Success Kid Meme" class="modal-img">
+            <h2 class="modal-title">Success Kid</h2>
+            <p class="modal-desc">
+                The Success Kid meme originated on August 26, 2007, when Laney Griner photographed her 11-month-old son Sammy at a beach in Jacksonville, Florida. The expression captured wasn't one of triumph but actually discomfort - Sammy had grabbed sand and put it in his mouth, creating his determined look with clenched fist. Initially uploaded to Flickr and later Getty Images, the photo first went viral in 2008 with the caption "I Hate Sandcastles," portraying Sammy as a beach bully who destroyed other children's creations. Around January 2011, the image was reframed on Reddit as "Success Kid," representing life's small victories and unexpected good fortune. The meme took on real-world significance in April 2015 when Sammy's father Justin needed a kidney transplant, and Laney's GoFundMe campaign leveraging her son's internet fame raised over $100,000 from strangers, ultimately saving Justin's life through a successful transplant.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2007</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Laney Griner</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">Medium</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">None Yet</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Distracted Boyfriend -->
+    <div id="distracted-boyfriend-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('distracted-boyfriend')">×</div>
+            <img src="/api/placeholder/400/320" alt="Distracted Boyfriend Meme" class="modal-img">
+            <h2 class="modal-title">Distracted Boyfriend</h2>
+            <p class="modal-desc">
+                The Distracted Boyfriend meme emerged from a commercial photoshoot by Catalan photographer Antonio Guillem in Girona, Spain, mid-2015. The stock photo, officially titled "Disloyal man walking with his girlfriend and looking amazed at another seductive girl" (Shutterstock ID: 58743398), was part of a larger narrative sequence about infidelity. The image remained commercially unsuccessful until August 19, 2017, when a Turkish Facebook group repurposed it with labels identifying the boyfriend as "Phil Collins," the girlfriend as "progressive rock," and the passing woman as "80s pop." Within days, English adaptations appeared on Twitter, and within a week, the format exploded across social platforms, perfectly encapsulating the "grass is greener" syndrome. Art historians have noted its compositional similarity to 17th-century Dutch paintings featuring morality tales, while Guillem revealed in interviews that his three models—Mario, Laura, and Diana—were close friends who found their unexpected internet fame both confusing and amusing.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2015 (photo), 2017 (meme)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Antonio Guillem</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">Medium-High</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">None Significant</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <!-- Modal for Hide the Pain Harold -->
+    <div id="hide-pain-harold-modal" class="modal">
+        <div class="modal-content">
+            <div class="close-modal" onclick="closeModal('hide-pain-harold')">×</div>
+            <img src="/api/placeholder/400/320" alt="Hide the Pain Harold Meme" class="modal-img">
+            <h2 class="modal-title">Hide the Pain Harold</h2>
+            <p class="modal-desc">
+                Hide the Pain Harold's journey began in 2011 when András Arató, a 66-year-old retired Hungarian electrical engineer, agreed to model for stock photos while vacationing in Turkey. During the photoshoot, the photographer's repeated instructions to smile resulted in Arató's signature expression—a smile that appears genuinely pained, creating an uncanny disconnect between his upturned mouth and sorrowful eyes. After being uploaded to stock photo sites, the images remained commercially unsuccessful until September 2011, when the first memes featuring Arató appeared on a Hungarian image board. By 2013, his photos had spread internationally on Imgur and 4chan, with captions expressing concealed emotional suffering, and the name "Hide the Pain Harold" emerged organically from these early captions. Unlike many unwitting meme subjects, Arató embraced his alter ego after initial resistance, appearing in commercials for companies like Coca-Cola and giving a 2019 TEDx talk in Kyiv titled "Living the Meme Life," where he explained how becoming Hide the Pain Harold gave him a second life after retirement.
+            </p>
+            <div class="modal-info">
+                <div class="info-item">
+                    <span class="info-label">Origin Year</span>
+                    <span class="info-value">2011 (photos), 2013 (meme)</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Creator</span>
+                    <span class="info-value">Stock photos of András Arató</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Cultural Impact</span>
+                    <span class="info-value">Medium-High</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Related Memecoin</span>
+                    <span class="info-value">None Significant</span>
+                </div>
+            </div>
+            <a href="#" class="buy-btn">Buy $ORIGIN Tokens</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">Project Origin</div>
+                <p>The first cryptocurrency dedicated to preserving and celebrating the history of internet meme culture.</p>
+                <div class="social-links">
+                    <a href="#">T</a>
+                    <a href="#">D</a>
+                    <a href="#">R</a>
+                    <a href="#">M</a>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Project Links</h3>
+                <ul>
+                    <li><a href="#">Whitepaper</a></li>
+                    <li><a href="#">Tokenomics</a></li>
+                    <li><a href="#">Roadmap</a></li>
+                    <li><a href="#">Team</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Communities</h3>
+                <ul>
+                    <li><a href="#">Discord</a></li>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Reddit</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">How to Buy</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Meme Submission</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2025 Project Origin. All rights reserved. This website is for entertainment purposes only and does not constitute financial advice.
+        </div>
+    </footer>
+    
+    <script>
+        function openModal(memeId) {
+            const modal = document.getElementById(memeId + '-modal');
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            
+            // Add active class for animation
+            setTimeout(() => {
+                modal.classList.add('modal-active');
+            }, 10);
+            
+            // Add scale animation to modal content
+            const content = modal.querySelector('.modal-content');
+            content.style.transform = 'scale(0.9)';
+            content.style.opacity = '0';
+            
+            setTimeout(() => {
+                content.style.transition = 'all 0.5s cubic-bezier(0.19, 1, 0.22, 1)';
+                content.style.transform = 'scale(1)';
+                content.style.opacity = '1';
+            }, 50);
+        }
+        
+        function closeModal(memeId) {
+            const modal = document.getElementById(memeId + '-modal');
+            const content = modal.querySelector('.modal-content');
+            
+            // Animate out
+            content.style.transform = 'scale(0.9)';
+            content.style.opacity = '0';
+            modal.classList.remove('modal-active');
+            
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+                content.style.transition = 'none';
+            }, 500);
+        }
+        
+        // Close modal when clicking outside of content
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    const memeId = modals[i].id.replace('-modal', '');
+                    closeModal(memeId);
+                }
+            }
+        }
+        
+        // Add hover effects for cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.meme-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const img = this.querySelector('img');
+                    img.style.transform = 'scale(1.1)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const img = this.querySelector('img');
+                    img.style.transform = 'scale(1)';
+                });
+            });
+            
+            // Add futuristic particle background effect
+            const header = document.querySelector('header');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 5 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.background = 'rgba(255,255,255,' + (Math.random() * 0.5 + 0.1) + ')';
+                particle.style.borderRadius = '50%';
+                particle.style.position = 'absolute';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animation = 'float ' + (Math.random() * 10 + 5) + 's linear infinite';
+                particle.style.opacity = Math.random() * 0.5 + 0.2;
+                particle.style.zIndex = '1';
+                
+                header.appendChild(particle);
+            }
+        });
+        
+        // Add floating animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes float {
+                0% { transform: translateY(0) translateX(0); }
+                25% { transform: translateY(-15px) translateX(15px); }
+                50% { transform: translateY(0) translateX(30px); }
+                75% { transform: translateY(15px) translateX(15px); }
+                100% { transform: translateY(0) translateX(0); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
