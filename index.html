@@ -517,7 +517,7 @@
         
         footer {
             background-color: #f8f8f8;
-            padding: 4rem 2rem;
+            padding: 2rem;
             text-align: center;
             position: relative;
             border-top: 1px solid rgba(0,0,0,0.05);
@@ -533,109 +533,7 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
         
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            text-align: left;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            color: var(--primary);
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-        }
-        
-        .footer-links h3 {
-            margin-bottom: 1.2rem;
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .footer-links h3::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 1.5px;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.8rem;
-            position: relative;
-            padding-left: 12px;
-        }
-        
-        .footer-links li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 5px;
-            height: 5px;
-            background-color: var(--accent);
-            border-radius: 50%;
-        }
-        
-        .footer-links a {
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary);
-            transform: translateX(5px);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            width: 40px;
-            height: 40px;
-            background-color: rgba(0,0,0,0.05);
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,120,255,0.3);
-        }
-        
         .copyright {
-            margin-top: 3rem;
-            opacity: 0.7;
             font-size: 0.95rem;
             color: var(--text);
         }
@@ -934,51 +832,8 @@
     </div>
     
     <footer>
-        <div class="footer-content">
-            <div>
-                <div class="footer-logo">Project Origin</div>
-                <p>The first cryptocurrency dedicated to preserving and celebrating the history of internet meme culture.</p>
-                <div class="social-links">
-                    <a href="#">T</a>
-                    <a href="#">D</a>
-                    <a href="#">R</a>
-                    <a href="#">M</a>
-                </div>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Project Links</h3>
-                <ul>
-                    <li><a href="#">Whitepaper</a></li>
-                    <li><a href="#">Tokenomics</a></li>
-                    <li><a href="#">Roadmap</a></li>
-                    <li><a href="#">Team</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Communities</h3>
-                <ul>
-                    <li><a href="#">Discord</a></li>
-                    <li><a href="#">Telegram</a></li>
-                    <li><a href="#">Twitter</a></li>
-                    <li><a href="#">Reddit</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-links">
-                <h3>Resources</h3>
-                <ul>
-                    <li><a href="#">How to Buy</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Meme Submission</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-        
         <div class="copyright">
-            &copy; 2025 Project Origin. All rights reserved. This website is for entertainment purposes only and does not constitute financial advice.
+            &copy; 2025 Project Origin. All rights reserved.
         </div>
     </footer>
     
