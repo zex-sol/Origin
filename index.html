@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Origin - Explore Meme Origins</title>
+    <title>Project Origin - Memecoin Website</title>
     <style>
         :root {
             --primary: #3c7eff;
@@ -38,11 +38,6 @@
             box-shadow: 0 5px 25px rgba(0,150,255,0.2);
         }
         
-        .header-content {
-            position: relative;
-            z-index: 2;
-        }
-        
         header::before {
             content: '';
             position: absolute;
@@ -62,6 +57,19 @@
             100% { transform: rotate(360deg); }
         }
         
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .header-left {
+            text-align: center;
+        }
+        
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
@@ -77,68 +85,27 @@
             opacity: 0.9;
         }
         
-        .coin-stats {
+        .social-icon {
             background-color: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 1.5rem;
-            border-radius: 16px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             display: flex;
-            justify-content: space-around;
-            max-width: 800px;
-            margin: 2rem auto 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             border: 1px solid rgba(255,255,255,0.2);
-            position: relative;
-            overflow: hidden;
         }
         
-        .coin-stats::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                transparent,
-                rgba(255,255,255,0.1) 45%, 
-                rgba(255,255,255,0.2) 50%, 
-                rgba(255,255,255,0.1) 55%,
-                transparent
-            );
-            transform: rotate(30deg);
-            animation: shine 8s linear infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(30deg); }
-            100% { transform: translateX(100%) rotate(30deg); }
-        }
-        
-        .stat {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .stat-value {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            opacity: 0.9;
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background-color: white;
+            color: var(--primary);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         main {
@@ -496,9 +463,10 @@
             font-size: 1.1rem;
         }
         
-
+        .buy-btn {
+            display: inline-block;
             margin-top: 2rem;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
@@ -506,13 +474,34 @@
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
             text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 8px 20px rgba(0,120,255,0.3);
+        }
+        
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
         }
         
         .buy-btn:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(108,92,231,0.4);
+            box-shadow: 0 12px 30px rgba(0,120,255,0.4);
+        }
+        
+        .buy-btn:hover::before {
+            opacity: 1;
         }
         
         footer {
@@ -538,14 +527,250 @@
             color: var(--text);
         }
         
+        /* Timeline Styles */
+        .timeline-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            font-weight: 800;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--text);
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 4px;
+            background: var(--primary);
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin-bottom: 2.5rem;
+            width: 50%;
+        }
+        
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            margin-left: auto;
+        }
+        
+        .timeline-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 500px;
+            border: 1px solid rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background: white;
+            transform: rotate(45deg);
+            border-right: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            right: auto;
+            left: -15px;
+            border-right: none;
+            border-left: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: none;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 20px;
+            right: -43px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            right: auto;
+            left: -43px;
+        }
+        
+        .timeline-date {
+            position: absolute;
+            top: 20px;
+            right: -110px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-date {
+            right: auto;
+            left: -110px;
+            text-align: right;
+        }
+        
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+        
+        .timeline-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-content:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,150,255,0.2);
+        }
+        
+        .timeline-content:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Animation classes */
+        .timeline-item {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(even) {
+            transform: translateY(50px);
+        }
+        
+        .timeline-item:nth-child(even).visible {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+            
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+                margin-left: 0;
+            }
+            
+            .timeline-dot {
+                left: 9px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 9px;
+            }
+            
+            .timeline-date {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 10px;
+                display: block;
+                color: var(--primary);
+                font-weight: 700;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-date {
+                text-align: left;
+                left: 0;
+            }
+            
+            .timeline-content::after {
+                display: none;
+            }
+        }
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2rem;
-            }
-            
-            .coin-stats {
-                flex-direction: column;
-                gap: 1rem;
             }
             
             .modal-content {
@@ -565,8 +790,15 @@
 <body>
     <header>
         <div class="header-content">
-            <h1>Project Origin</h1>
-            <p>Discover the origins of the internet's most iconic memes while investing in the future of memecoin</p>
+            <div class="header-left">
+                <h1>Project Origin</h1>
+                <p>Discover the origins of the internet's most iconic memes while investing in the future of memecoin</p>
+            </div>
+            <a href="https://x.com/origin_on_sol" class="social-icon" target="_blank" title="Follow us on Twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                </svg>
+            </a>
         </div>
     </header>
     
@@ -584,7 +816,7 @@
                 </div>
                 <div class="meme-details">
                     <h3>Doge</h3>
-                    <p>The iconic Shiba Inu that started a memecoin revolution</p>
+                    <p>The Doge meme originated from a 2010 blog post by Japanese kindergarten teacher Atsuko Sato featuring photos of her Shiba Inu dog Kabosu. The specific image gained popularity in late 2010 when posted to Reddit with the title "LMBO LOOK @ THIS FUKKIN DOGE," giving birth to the misspelled "doge" moniker. The meme's distinctive aesthetic developed organically around 2013: Comic Sans MS font, intentionally broken English phrases ("such wow," "very amaze"), and multicolored text became standardized as it spread across Reddit, Tumblr, and 4chan. Dogecoin, created by Billy Markus and Jackson Palmer on December 6, 2013 as cryptocurrency satire, later skyrocketed in value after Elon Musk's 2021 endorsements, transforming a simple dog photo into a multibillion-dollar phenomenon.</p>
                 </div>
             </div>
             
@@ -595,7 +827,7 @@
                 </div>
                 <div class="meme-details">
                     <h3>Wojak</h3>
-                    <p>The feels guy and his many emotional derivatives</p>
+                    <p>Wojak (pronounced "voy-ack") emerged around 2009-2010 from a Polish image board called Vichan as a simple, minimalist line drawing of a bald man with a blank expression, reportedly created by an anonymous Polish user as a self-portrait. The name "Wojak" itself means "soldier" or "fighter" in Polish, though the character's demeanor hardly suggests aggression. The drawing first spread to German imageboard Krautchan (where he was known as "Ciepła Twarz" - Polish for "warm face") before reaching 4chan around 2010-2011. Wojak's evolution accelerated after 2014 when he became associated with the "feels" phenomenon, leading to the "I Know That Feel Bro" meme and numerous psychological archetypes like Doomer, Bloomer, and NPC. In cryptocurrency culture, specialized Wojak variants reflect investor psychology—from the euphoric "rich" Wojak celebrating gains to the desperate "poor" Wojak facing financial ruin.</p>
                 </div>
             </div>
             
@@ -606,7 +838,7 @@
                 </div>
                 <div class="meme-details">
                     <h3>Pepe the Frog</h3>
-                    <p>From comic character to crypto icon</p>
+                    <p>Pepe the Frog began in 2005 with artist Matt Furie's self-published "Boy's Club" zine, featuring an anthropomorphic frog alongside other animal characters in laid-back scenarios. The specific panel that launched Pepe's meme career came from a 2008 comic where Pepe responds to being caught urinating with his pants down with the nonchalant phrase "feels good man" - this single frame first circulated on bodybuilding forums and 4chan as a reaction image. Between 2008 and 2015, users modified the character to express various emotions ("Sad Frog," "Angry Pepe," "Smug Frog"), before the character became entangled in political controversies around 2016, devastating Furie who even symbolically killed the character in 2017. In the cryptocurrency space, Pepe found new life, most notably with the 2021 launch of the PEPE token, which reached a market capitalization of over $1 billion by 2023, and through the pioneering "Rare Pepes" NFT collection on the Bitcoin blockchain in 2016.</p>
                 </div>
             </div>
             
@@ -617,7 +849,7 @@
                 </div>
                 <div class="meme-details">
                     <h3>Success Kid</h3>
-                    <p>The fist-pumping baby of victory</p>
+                    <p>The Success Kid meme originated on August 26, 2007, when Laney Griner photographed her 11-month-old son Sammy at a beach in Jacksonville, Florida. The expression captured wasn't one of triumph but actually discomfort - Sammy had grabbed sand and put it in his mouth, creating his determined look with clenched fist. Initially uploaded to Flickr and later Getty Images, the photo first went viral in 2008 with the caption "I Hate Sandcastles," portraying Sammy as a beach bully who destroyed other children's creations. Around January 2011, the image was reframed on Reddit as "Success Kid," representing life's small victories and unexpected good fortune. The meme took on real-world significance in April 2015 when Sammy's father Justin needed a kidney transplant, and Laney's GoFundMe campaign leveraging her son's internet fame raised over $100,000 from strangers, ultimately saving Justin's life through a successful transplant.</p>
                 </div>
             </div>
             
@@ -628,7 +860,7 @@
                 </div>
                 <div class="meme-details">
                     <h3>Distracted Boyfriend</h3>
-                    <p>A stock photo that captured the internet's attention</p>
+                    <p>The Distracted Boyfriend meme emerged from a commercial photoshoot by Catalan photographer Antonio Guillem in Girona, Spain, mid-2015. The stock photo, officially titled "Disloyal man walking with his girlfriend and looking amazed at another seductive girl" (Shutterstock ID: 58743398), was part of a larger narrative sequence about infidelity. The image remained commercially unsuccessful until August 19, 2017, when a Turkish Facebook group repurposed it with labels identifying the boyfriend as "Phil Collins," the girlfriend as "progressive rock," and the passing woman as "80s pop." Within days, English adaptations appeared on Twitter, and within a week, the format exploded across social platforms, perfectly encapsulating the "grass is greener" syndrome. Art historians have noted its compositional similarity to 17th-century Dutch paintings featuring morality tales, while Guillem revealed in interviews that his three models—Mario, Laura, and Diana—were close friends who found their unexpected internet fame both confusing and amusing.</p>
                 </div>
             </div>
             
@@ -639,7 +871,89 @@
                 </div>
                 <div class="meme-details">
                     <h3>Hide the Pain Harold</h3>
-                    <p>The stock photo model with the iconic forced smile</p>
+                    <p>Hide the Pain Harold's journey began in 2011 when András Arató, a 66-year-old retired Hungarian electrical engineer, agreed to a stock photo shoot after being discovered on a social media site called iWiW. During the photoshoot, the photographer's repeated instructions to smile resulted in Arató's signature expression—a smile that appears genuinely pained, creating an uncanny disconnect between his upturned mouth and sorrowful eyes. After being uploaded to stock photo sites, the images remained commercially unsuccessful until September 2011, when the first memes featuring Arató appeared on a Hungarian image board. By 2013, his photos had spread internationally on Imgur and 4chan, with captions expressing concealed emotional suffering, and the name "Hide the Pain Harold" emerged organically from these early captions. Unlike many unwitting meme subjects, Arató embraced his alter ego after initial resistance, appearing in commercials for companies like Coca-Cola and giving a 2019 TEDx talk in Kyiv titled "Living the Meme Life," where he explained how becoming Hide the Pain Harold gave him a second life after retirement.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Timeline Section -->
+        <section class="timeline-section">
+            <div class="section-title">
+                <h2>The Evolution of Memes</h2>
+                <p>Explore the fascinating timeline of internet memes featured in our collection, from their first appearances to global phenomenon status.</p>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- Pepe the Frog -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Pepe the Frog</h3>
+                        <div class="timeline-date">2005</div>
+                        <p>Artist Matt Furie creates Pepe the Frog as a character in his comic series "Boy's Club," depicting a laid-back anthropomorphic frog.</p>
+                        <p>The original "Feels Good Man" panel featuring Pepe appeared in 2008, showing him responding to being caught urinating with his pants down.</p>
+                        <img src="pepe.png" alt="Pepe the Frog Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
+                </div>
+                
+                <!-- Success Kid -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Success Kid</h3>
+                        <div class="timeline-date">August 26, 2007</div>
+                        <p>Laney Griner takes a photo of her 11-month-old son Sammy at a beach in Jacksonville, Florida. The image captured Sammy with sand in his hand and a determined expression.</p>
+                        <p>Originally uploaded to Flickr with the caption "Why I oughta...", the photo initially gained popularity in 2008 with the caption "I Hate Sandcastles."</p>
+                        <img src="success-kid.png" alt="Success Kid Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
+                </div>
+                
+                <!-- Doge -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Doge</h3>
+                        <div class="timeline-date">February 23, 2010</div>
+                        <p>Japanese kindergarten teacher Atsuko Sato posts photos of her adopted Shiba Inu dog Kabosu on her personal blog.</p>
+                        <p>The specific image gained popularity when it was posted to Reddit in late 2010 with the title "LMBO LOOK @ THIS FUKKIN DOGE," but didn't reach its peak popularity until 2013 with the distinctive Comic Sans text and internal monologue captions.</p>
+                        <img src="doge.png" alt="Doge Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
+                </div>
+                
+                <!-- Wojak -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Wojak (Feels Guy)</h3>
+                        <div class="timeline-date">December 16, 2009</div>
+                        <p>The earliest archived appearance of Wojak was posted on the meme site Sad and Useless, with origins traced to a Polish imageboard called Vichan.</p>
+                        <p>By 2011, the image of two Wojaks hugging each other under the caption "I know that feel bro" gained significant popularity, establishing Wojak as the internet's expression of melancholy and shared emotional experiences.</p>
+                        <img src="wojak.png" alt="Wojak Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
+                </div>
+                
+                <!-- Hide the Pain Harold -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Hide the Pain Harold</h3>
+                        <div class="timeline-date">2011</div>
+                        <p>Hungarian retired electrical engineer András Arató agrees to a stock photo shoot after being discovered on a social media site called iWiW.</p>
+                        <p>The earliest known memes featuring Arató appeared on the Hungarian image board Facepunch in September 2011, with the images spreading internationally in 2013 when users began captioning his photos with text expressing concealed emotional suffering.</p>
+                        <img src="hide-pain-harold.png" alt="Hide the Pain Harold Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
+                </div>
+                
+                <!-- Distracted Boyfriend -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Distracted Boyfriend</h3>
+                        <div class="timeline-date">Mid-2015</div>
+                        <p>Spanish photographer Antonio Guillem shoots a stock photo series in Girona, Catalonia featuring models known by their stage names "Mario" and "Laura."</p>
+                        <p>The image was uploaded to iStock on November 1, 2015, with the description "Disloyal man with his girlfriend looking at another girl." It first gained meme status in January 2017 on a Turkish Facebook group and went viral globally in August 2017.</p>
+                        <img src="distracted-boyfriend.png" alt="Distracted Boyfriend Meme">
+                    </div>
+                    <span class="timeline-dot"></span>
                 </div>
             </div>
         </section>
@@ -688,11 +1002,11 @@
             <div class="modal-info">
                 <div class="info-item">
                     <span class="info-label">Origin Year</span>
-                    <span class="info-value">2010</span>
+                    <span class="info-value">2009-2010</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Creator</span>
-                    <span class="info-value">Anonymous (Krautchan)</span>
+                    <span class="info-value">Anonymous (Polish user)</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Cultural Impact</span>
@@ -758,7 +1072,7 @@
                 </div>
                 <div class="info-item">
                     <span class="info-label">Cultural Impact</span>
-                    <span class="info-value">Medium</span>
+                    <span class="info-value">Medium-High</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Related Memecoin</span>
@@ -781,7 +1095,7 @@
             <div class="modal-info">
                 <div class="info-item">
                     <span class="info-label">Origin Year</span>
-                    <span class="info-value">2015 (photo), 2017 (meme)</span>
+                    <span class="info-value">2015</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Creator</span>
@@ -807,16 +1121,16 @@
             <img src="hide-pain-harold.png" alt="Hide the Pain Harold Meme" class="modal-img">
             <h2 class="modal-title">Hide the Pain Harold</h2>
             <p class="modal-desc">
-                Hide the Pain Harold's journey began in 2011 when András Arató, a 66-year-old retired Hungarian electrical engineer, agreed to model for stock photos while vacationing in Turkey. During the photoshoot, the photographer's repeated instructions to smile resulted in Arató's signature expression—a smile that appears genuinely pained, creating an uncanny disconnect between his upturned mouth and sorrowful eyes. After being uploaded to stock photo sites, the images remained commercially unsuccessful until September 2011, when the first memes featuring Arató appeared on a Hungarian image board. By 2013, his photos had spread internationally on Imgur and 4chan, with captions expressing concealed emotional suffering, and the name "Hide the Pain Harold" emerged organically from these early captions. Unlike many unwitting meme subjects, Arató embraced his alter ego after initial resistance, appearing in commercials for companies like Coca-Cola and giving a 2019 TEDx talk in Kyiv titled "Living the Meme Life," where he explained how becoming Hide the Pain Harold gave him a second life after retirement.
+                Hide the Pain Harold's journey began in 2011 when András Arató, a 66-year-old retired Hungarian electrical engineer, agreed to a stock photo shoot after being discovered on a social media site called iWiW. During the photoshoot, the photographer's repeated instructions to smile resulted in Arató's signature expression—a smile that appears genuinely pained, creating an uncanny disconnect between his upturned mouth and sorrowful eyes. After being uploaded to stock photo sites, the images remained commercially unsuccessful until September 2011, when the first memes featuring Arató appeared on a Hungarian image board. By 2013, his photos had spread internationally on Imgur and 4chan, with captions expressing concealed emotional suffering, and the name "Hide the Pain Harold" emerged organically from these early captions. Unlike many unwitting meme subjects, Arató embraced his alter ego after initial resistance, appearing in commercials for companies like Coca-Cola and giving a 2019 TEDx talk in Kyiv titled "Living the Meme Life," where he explained how becoming Hide the Pain Harold gave him a second life after retirement.
             </p>
             <div class="modal-info">
                 <div class="info-item">
                     <span class="info-label">Origin Year</span>
-                    <span class="info-value">2011 (photos), 2013 (meme)</span>
+                    <span class="info-value">2011</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Creator</span>
-                    <span class="info-value">Stock photos of András Arató</span>
+                    <span class="info-value">András Arató (model)</span>
                 </div>
                 <div class="info-item">
                     <span class="info-label">Cultural Impact</span>
@@ -838,6 +1152,7 @@
     </footer>
     
     <script>
+        // Modal functions
         function openModal(memeId) {
             const modal = document.getElementById(memeId + '-modal');
             modal.style.display = 'block';
@@ -921,6 +1236,23 @@
                 
                 header.appendChild(particle);
             }
+            
+            // Timeline animation
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            timelineItems.forEach(item => {
+                observer.observe(item);
+            });
         });
         
         // Add floating animation
